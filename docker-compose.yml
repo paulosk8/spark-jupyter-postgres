@@ -1,0 +1,21 @@
+services:
+  spark:
+    build: ./spark
+    container_name: spark
+    ports:
+      - "4040:4040" # Spark UI
+      - "8888:8888" # Jupyter Notebook
+    volumes:
+      - ./notebooks:/home/jovyan/work
+    environment:
+      - PYSPARK_PYTHON=python3
+      - SPARK_MODE=local
+      - POSTGRES_HOST=172.173.77.167
+      - POSTGRES_PORT=5432
+      - POSTGRES_DB=dvdrental
+      - POSTGRES_USER=espe
+      - POSTGRES_PASSWORD=sbdd.2025
+    command: >
+      bash -c "
+        jupyter notebook --ip=0.0.0.0 --port=8888 --no-browser --allow-root
+      "
