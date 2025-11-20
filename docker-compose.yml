@@ -7,6 +7,7 @@ services:
       - "8888:8888" # Jupyter Notebook
     volumes:
       - ./notebooks:/home/jovyan/work
+      - ./data:/home/jovyan/data
     environment:
       - PYSPARK_PYTHON=python3
       - SPARK_MODE=local
