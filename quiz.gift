@@ -1,0 +1,80 @@
+
+// Pregunta 1: Carga de datos
+::Carga de Datos::[html]<p>Al cargar el archivo <code>juegos.csv</code>, ¿qué problema de esquema se presenta y cómo se puede solucionar utilizando las opciones de lectura de Spark?</p>{
+    =El encabezado del CSV no coincide con el esquema definido. Se puede solucionar utilizando la opción `header=True` y asegurándose de que los nombres de las columnas en el esquema coincidan con los del archivo.
+    ~El archivo está corrupto y no se puede leer.
+    ~Spark no puede leer archivos CSV con encabezados.
+    # El problema es que la primera columna del CSV no tiene nombre en el header, por lo que al inferir el esquema con `header=True` se genera un DataFrame con una columna extra llamada `_c0`. La solución es definir el esquema manualmente y usar la opción `header=True`, o renombrar la columna después de la carga.
+}
+
+// Pregunta 2: Transformaciones
+::Transformaciones::[html]<p>¿Cuál de las siguientes transformaciones de Spark se utiliza para combinar dos RDDs o DataFrames?</p>{
+    =union
+    ~join
+    ~merge
+    ~combine
+}
+
+// Pregunta 3: Acciones
+::Acciones::[html]<p>Si se quiere obtener el número total de medallas de oro ganadas por un país específico, ¿qué acción de Spark se debería utilizar después de realizar las transformaciones necesarias?</p>{
+    =count
+    ~collect
+    ~take
+    ~reduce
+}
+
+// Pregunta 4: Funciones de ventana
+::Funciones de Ventana::[html]<p>¿Para qué se utilizan principalmente las funciones de ventana en Spark SQL?</p>{
+    =Para realizar cálculos sobre un conjunto de filas que están relacionadas con la fila actual.
+    ~Para crear nuevas ventanas en la interfaz de usuario de Spark.
+    ~Para dividir un DataFrame en múltiples ventanas.
+    ~Para visualizar los datos en una ventana emergente.
+}
+
+// Pregunta 5: UDFs
+::UDFs::[html]<p>¿Qué es una UDF (User Defined Function) en Spark y en qué situación se utilizaría?</p>{
+    =Una función definida por el usuario para realizar operaciones que no están disponibles en las funciones estándar de Spark. Se utilizaría, por ejemplo, para aplicar una lógica de negocio compleja a una columna.
+    ~Una función para definir la estructura de un DataFrame.
+    ~Una función para optimizar el rendimiento de una consulta.
+    ~Una función para conectarse a una fuente de datos externa.
+}
+
+// Pregunta 6: Optimización
+::Optimización::[html]<p>Mencione una técnica común para optimizar el rendimiento de un job de Spark.</p>{
+    =Utilizar el cache() o persist() en DataFrames que se utilizan repetidamente.
+    ~Aumentar el número de ejecutores al máximo posible.
+    ~Utilizar `collect()` con frecuencia para inspeccionar los datos.
+    ~Evitar el uso de `broadcast joins`.
+}
+
+// Pregunta 7: Análisis de datos
+::Análisis de Datos::[html]<p>En el análisis de la edad de los medallistas, ¿qué transformación de Spark sería la más adecuada para agrupar los datos por deporte y calcular la edad promedio?</p>{
+    =groupBy() y agg()
+    ~filter()
+    ~sort()
+    ~select()
+}
+
+// Pregunta 8: SQL en Spark
+::SQL en Spark::[html]<p>¿Qué se necesita hacer antes de poder ejecutar una consulta SQL sobre un DataFrame?</p>{
+    =Crear una vista temporal (temporal view) del DataFrame.
+    ~Convertir el DataFrame a un RDD.
+    ~Guardar el DataFrame en un archivo Parquet.
+    ~No se necesita hacer nada, se puede ejecutar SQL directamente.
+}
+
+// Pregunta 9: Diferencia entre RDD y DataFrame
+::RDD vs DataFrame::[html]<p>¿Cuál es una de las principales ventajas de utilizar DataFrames en lugar de RDDs?</p>{
+    =Los DataFrames utilizan el optimizador Catalyst de Spark para mejorar el rendimiento de las consultas.
+    ~Los DataFrames son más flexibles y permiten trabajar con datos no estructurados.
+    ~Los DataFrames son más fáciles de depurar.
+    ~Los DataFrames son la única forma de leer datos de archivos CSV.
+}
+
+// Pregunta 10: Joins
+::Joins::[html]<p>Al unir los DataFrames de deportistas y resultados, ¿qué tipo de join se debería utilizar para asegurarse de que todos los deportistas aparezcan en el resultado, incluso si no han ganado una medalla?</p>{
+    =Left join
+    ~Inner join
+    ~Right join
+    ~Full outer join
+}
